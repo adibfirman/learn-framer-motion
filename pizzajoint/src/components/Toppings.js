@@ -1,32 +1,54 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Toppings = ({ addTopping, pizza }) => {
-  let toppings = ['mushrooms', 'peppers', 'onions', 'olives', 'extra cheese', 'tomatoes'];
+  let toppings = [
+    "mushrooms",
+    "peppers",
+    "onions",
+    "olives",
+    "extra cheese",
+    "tomatoes",
+  ];
 
   return (
-    <div className="toppings container">
-      
+    <motion.div
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      transition={{ delay: 0.5, type: "spring" }}
+      className="toppings container"
+    >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
-        {toppings.map(topping => {
-          let spanClass = pizza.toppings.includes(topping) ? 'active' : '';
+        {toppings.map((topping) => {
+          let spanClass = pizza.toppings.includes(topping) ? "active" : "";
           return (
-            <li key={topping} onClick={() => addTopping(topping)}>
-              <span className={spanClass}>{ topping }</span>
-            </li>
-          )
+            <motion.li
+              whileHover={{ scale: 1.2, color: "#f8e112", originX: 0 }}
+              transition={{ type: "spring", stiffness: 500 }}
+              key={topping}
+              onClick={() => addTopping(topping)}
+            >
+              <span className={spanClass}>{topping}</span>
+            </motion.li>
+          );
         })}
       </ul>
 
       <Link to="/order">
-        <button>
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            textShadow: "0px 0px 8px rgb(255,255,255)",
+            boxShadow: "0px 0px 8px rgb(255,255,255)",
+          }}
+        >
           Order
-        </button>
+        </motion.button>
       </Link>
-
-    </div>
-  )
-}
+    </motion.div>
+  );
+};
 
 export default Toppings;
