@@ -10,6 +10,9 @@ const containerVariants = {
     opacity: 1,
     transition: { delay: 1.3, duration: 2 },
   },
+  exit: {
+    x: "-100vw",
+  },
 };
 
 const buttonVariants = {
@@ -30,6 +33,7 @@ const Home = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
       className="home container"
     >
       <h2>Welcome to Pizza Joint</h2>
